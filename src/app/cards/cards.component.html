@@ -1,8 +1,11 @@
 <div class="card-container" *ngFor="let item of list">
     <div class="card" (click)="getUser(item.id)">
+        <div class="card-info">
         <img src="{{item.avatar}}" alt="" class="img">
         <div class="name">{{item.name}}</div>
         <div class="rol">{{item.rol}}</div>
         <div class="email">{{item.email}}</div>
     </div>
+</div>
+
 </div>

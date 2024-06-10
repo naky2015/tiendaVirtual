@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { UsersService } from '../users.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-cards',
@@ -16,8 +16,10 @@ constructor(private user: UsersService){}
 
 
 getUser(ev : number){
+
   console.log(ev);
   this.user.getUser(ev).subscribe((res)=>console.log(res))
+  
 }
 
 }

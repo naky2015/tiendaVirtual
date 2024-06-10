@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Users } from './interfaces/users.interface';
+import { Users } from '../interfaces/users.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+  public variable_prueba : string = 'Hola mundo';
 
   constructor(private http: HttpClient) { }
 

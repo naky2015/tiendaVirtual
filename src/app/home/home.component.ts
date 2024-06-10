@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CardsComponent } from '../cards/cards.component';
-import { DolarService } from '../dolar.service';
+import { DolarService } from '../services/dolar.service';
 import { DolarInterface } from '../interfaces/dolar.interface';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../users.service';
+import { UsersService } from '../services/users.service';
 import { Users } from '../interfaces/users.interface';
 
 
