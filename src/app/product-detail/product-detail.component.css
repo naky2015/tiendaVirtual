@@ -1,0 +1,20 @@
+.layout-container{
+    position:fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4444445d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal{
+    position: relative;
+    
+    height: 70vh;
+    width: 70vw;
+    background-color: blanchedalmond;
+}

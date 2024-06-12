@@ -1,11 +1,10 @@
 <div class="card-container" *ngFor="let item of list">
-    <div class="card" (click)="getUser(item.id)">
-        <div class="card-info">
-        <img src="{{item.avatar}}" alt="" class="img">
-        <div class="name">{{item.name}}</div>
-        <div class="rol">{{item.rol}}</div>
-        <div class="email">{{item.email}}</div>
-    </div>
+    <div class="card" (click)="getProduct(item.id_producto)">
+
+        <img src="https://sistemadeventas.com.ar/api/{{item.imagen_producto}}" alt="" class="img">
+        <div class="name">{{item.nombre_producto}}</div>
 </div>
 
 </div>
+
+<app-product-detail [product]="individualProduct" (close)="closeModal()" *ngIf="individualProduct?.id_producto>0"></app-product-detail>

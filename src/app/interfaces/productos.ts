@@ -1,14 +1,14 @@
-export interface Products{
-    id: number,
-    name: string,
-    money: ProductPrices,
-    category: number,
-    description?: string,
-    price: number
+export interface Product {
+  categoria_id: number;
+  created_at: Date;
+  disponible: number;
+  id_producto: number;
+  imagen_producto: string;
+  nombre_producto: string;
+  precio_producto: number;
+  updated_at: Date;
 }
 
-export interface ProductPrices{
-    cost: number,
-    tax:number,
-    price: number
+export interface ProducsArray{
+    results: Product[];
 }

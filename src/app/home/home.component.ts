@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CardsComponent } from '../cards/cards.component';
 import { DolarService } from '../services/dolar.service';
 import { DolarInterface } from '../interfaces/dolar.interface';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../services/users.service';
 import { Users } from '../interfaces/users.interface';
+import { ProductsService } from '../services/products.service';
+import { ProducsArray, Product } from '../interfaces/productos';
 
 
 @Component({
@@ -15,18 +17,22 @@ import { Users } from '../interfaces/users.interface';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  data!: Users;
+  data!: Product[];
   loader:boolean =false
-  constructor(private dolarService: DolarService, private users: UsersService){
+  products= inject(ProductsService)
+
+  constructor(private dolarService: DolarService, 
+    private users: UsersService){
     
   }
   
   ngOnInit(): void {
-    this.getAllUsers();
-    this.listAllDolars();
+    this.getAllProducts()
+    /* this.getAllUsers();
+    this.listAllDolars(); */
   }
 
-  getAllUsers(){
+/*   getAllUsers(){
     this.loader=true;
     this.users.getUsers().subscribe({next:(res: Users )=>{
       this.data = res;
@@ -37,9 +43,6 @@ export class HomeComponent implements OnInit{
   } })
   }
 
-  getUser(ev: any){
-  
-  }
 
   listAllDolars(){
     this.loader=true;
@@ -55,6 +58,14 @@ export class HomeComponent implements OnInit{
       console.log("Error al buscar datos")
     }, complete:()=>{
     } })
+  } */
+
+  getAllProducts(){
+    this.products.getProducts().subscribe((res:ProducsArray)=>{
+      /* console.log("Productos: ", res) */
+    this.data = res.results
+
+    })
   }
 
 }
