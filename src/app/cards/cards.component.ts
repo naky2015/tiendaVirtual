@@ -26,6 +26,7 @@ constructor(private user: UsersService){}
 getProduct(ev : number){
   this.productService.getIndividualProduct(ev).subscribe(res=>{
     this.individualProduct= res.results[0]
+
   }
   )
   

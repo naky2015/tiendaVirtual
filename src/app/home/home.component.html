@@ -1,4 +1,8 @@
 <h1>Usuarios</h1>
-<app-cards [list]="data" class="max"></app-cards>
+<label for="searchBox"></label>
+<input type="text" name="searchBox" [(ngModel)]="searchData" (keyup)="getFileteredPruducts()" id="">
+    <app-cards [list]="data" *ngIf="searchData==''" class="max"></app-cards>
+    
+    <app-cards [list]="filteredData" *ngIf="searchData!=''" class="max"></app-cards>
 
 <span class="loader" *ngIf="loader"></span>

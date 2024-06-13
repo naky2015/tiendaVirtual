@@ -7,12 +7,13 @@ import { UsersService } from '../services/users.service';
 import { Users } from '../interfaces/users.interface';
 import { ProductsService } from '../services/products.service';
 import { ProducsArray, Product } from '../interfaces/productos';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports:[CardsComponent, CommonModule],
+  imports:[CardsComponent, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit{
   data!: Product[];
   loader:boolean =false
   products= inject(ProductsService)
-
+  filteredData!: Product[]| null;
+  searchData:string ='';
   constructor(private dolarService: DolarService, 
     private users: UsersService){
     
@@ -28,44 +30,20 @@ export class HomeComponent implements OnInit{
   
   ngOnInit(): void {
     this.getAllProducts()
-    /* this.getAllUsers();
-    this.listAllDolars(); */
-  }
-
-/*   getAllUsers(){
-    this.loader=true;
-    this.users.getUsers().subscribe({next:(res: Users )=>{
-      this.data = res;
-   }, error:()=>{
-     console.log("Error al buscar datos")
-   }, complete:()=>{
-  this.loader=false; 
-  } })
-  }
-
-
-  listAllDolars(){
-    this.loader=true;
-    this.dolarService.listDolars().subscribe({next:(data:DolarInterface[])=>{
-      data.forEach(element => {
-      
-      } )
-      
-      this.loader=false;
-      
-
-    },error: ()=>{
-      console.log("Error al buscar datos")
-    }, complete:()=>{
-    } })
-  } */
+   }
 
   getAllProducts(){
     this.products.getProducts().subscribe((res:ProducsArray)=>{
-      /* console.log("Productos: ", res) */
     this.data = res.results
 
     })
   }
 
+  getFileteredPruducts(){
+    this.filteredData = this.data.filter((product: Product)=>{
+      
+      return product.nombre_producto.includes(this.searchData)
+
+    })
+  }
 }

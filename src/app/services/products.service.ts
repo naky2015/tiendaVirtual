@@ -17,4 +17,8 @@ getProducts():Observable<ProducsArray>{
 getIndividualProduct(id: number): Observable<ProducsArray>{
   return this._http.get<ProducsArray>(`${this.urlBase}/productos?linkTo=id_producto&equalTo=${id}`)
 }
+getPrductsByName(name: string){
+   return this._http.get(`${this.urlBase}/productos?linkTo=producto&like=${name}`)
+}
+
 }
